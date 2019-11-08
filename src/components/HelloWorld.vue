@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <img src="../assets/logo.png" alt="vue icon" />
+    <h1>Hello World</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -41,6 +42,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+  text-align: center;
+}
 h3 {
   margin: 40px 0 0;
 }
