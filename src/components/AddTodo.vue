@@ -1,9 +1,7 @@
 <template>
-  <form class="addTodoForm" @submit="addTodo">
-    <div class="container">
+  <form  @submit="addTodo">
       <input type="text" v-model="title" name="title" id class="addTodo" placeholder="Add Todo..." />
-      <button type="submit" class="addTodoBtn">+</button>
-    </div>
+      <input type="submit" class="addTodoBtn" />
   </form>
 </template>
 
@@ -25,32 +23,27 @@ export default {
 };
 </script>
 
-<style>
-.addTodoForm {
+<style scoped>
+form {
   display: flex;
-  border: solid blue
-}
-
-.container {
-    border:solid blueviolet;
-    flex:1;
+  margin: 0 10% 5% 10%;
 }
 
 .addTodoBtn {
-  border-radius: 50%;
   border: none;
-  background: rgb(64, 168, 61);
+  background: rgb(0, 174, 255);
   padding: 15px;
-  flex: 0.4;
+  flex: 2;
+  cursor: pointer;
 }
 
 .addTodo {
-  border-radius: 7%;
-  padding: 13px;
-  flex: 20;
+  padding: 15px;
+  flex: 10;
 }
 
 .addTodo:focus {
-  border: solid 2px rgb(0, 206, 206);
+  border: solid 2px rgb(0, 132, 255);
+  border-right: none;
 }
 </style>

@@ -1,14 +1,16 @@
 <template>
   <div id="home">
+    <h1 class="welcomeBack">Welcome back {{getCurrentUser.firstName}}!</h1>
     <AddTodo v-on:add-todo="addTodo"/>
     <Todos/>
+    <p>*Double-click to finish Todo</p>
   </div>
 </template>
 
 <script>
 import Todos from '../components/Todos'
 import AddTodo from '../components/AddTodo'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import uuid from 'uuid'
 
 export default {
@@ -17,6 +19,7 @@ export default {
     Todos,
     AddTodo
   },
+  computed: {...mapGetters(["getCurrentUser"])},
   methods: {
     ...mapActions(["addNewTodo"]),
     addTodo(title) {
