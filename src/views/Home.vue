@@ -1,23 +1,27 @@
 <template>
   <div id="home">
     <h1 class="welcomeBack">Welcome back {{getCurrentUser.firstName}}!</h1>
-    <AddTodo v-on:add-todo="addTodo"/>
-    <Todos/>
+    <TodoAdd v-on:add-todo="addTodo"/>
+    <TodoFilter />
+    <TodosGrid/>
+    
     <p>*Double-click to finish Todo</p>
   </div>
 </template>
 
 <script>
-import Todos from '../components/Todos'
-import AddTodo from '../components/AddTodo'
+import TodosGrid from '../components/TodosGrid'
+import TodoAdd from '../components/TodoAdd'
+import TodoFilter from '../components/TodoFilter'
 import { mapGetters, mapActions } from 'vuex'
 import uuid from 'uuid'
 
 export default {
   name: 'Home',
   components: {
-    Todos,
-    AddTodo
+    TodosGrid,
+    TodoAdd,
+    TodoFilter
   },
   computed: {...mapGetters(["getCurrentUser"])},
   methods: {

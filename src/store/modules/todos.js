@@ -1,4 +1,5 @@
 import axios from "axios"
+import { stat } from "fs"
 
 const state = {
     todos: []
@@ -9,9 +10,9 @@ const getters = {
 }
 
 const actions = {
-     async fetchTodos({ commit }) {
+     async fetchTodos({ commit }, limit) {
         await axios
-            .get("https://jsonplaceholder.typicode.com/todos?_limit=16")
+            .get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`)
             .then(res=>commit('setTodos', res.data))
             .catch(err=>console.log(err))
     },
@@ -36,6 +37,13 @@ const actions = {
             )
             .then(commit('finishTodoById', todo))
             .catch(err=>console.log(err))
+    },
+
+    async filterTodosList({commit}, filter) {
+        await axios
+            .get("https://jsonplaceholder.typicode.com/todos")
+            .then(res=> commit('setFilteredList', filter))
+            .catch(err=>console.log(err))
     }
 }
 
@@ -50,7 +58,42 @@ const mutations = {
         if(todo.id == stateTodo.id){
             stateTodo.completed = true
         }
-    })
+    }),
+
+    setFilteredList: (state, filter) => {
+        const calc = () => {
+            state.todos = state.todos.filter((todo, i)=> i <= (parseInt(filter)-1) )
+        }
+        switch(filter) {
+            case "5":
+                calc();
+            break;
+
+            case "20":
+                calc();
+            break;
+
+            case "50":
+                calc();
+            break;
+
+            case "100":
+                calc();
+            break;
+
+            case "200":
+                calc();
+            break;
+
+            case "Completed":
+                state.todos = state.todos.filter(todo=>todo.completed === false)
+            break;
+
+            case "NotCompleted":
+                    state.todos = state.todos.filter(todo=>todo.completed === true)
+            break;
+        }
+    }
     
 }
 

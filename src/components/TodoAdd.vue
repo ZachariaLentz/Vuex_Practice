@@ -1,13 +1,13 @@
 <template>
   <form  @submit="addTodo">
-      <input type="text" v-model="title" name="title" id class="addTodo" placeholder="Add Todo..." />
+      <input type="text" v-model="title" name="title" class="addTodo" placeholder="Add Todo..." />
       <input type="submit" class="addTodoBtn" />
   </form>
 </template>
 
 <script>
 export default {
-  name: "AddTodo",
+  name: "TodoAdd",
   data() {
     return {
       title: ""
